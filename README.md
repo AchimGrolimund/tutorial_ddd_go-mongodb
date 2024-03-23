@@ -27,3 +27,22 @@ Die Aufteilung des Codes in diese Schichten hat mehrere Vorteile:
 3. **Testbarkeit**: Da jede Schicht unabhängig ist, kann sie einzeln getestet werden. Dies erleichtert das Schreiben von Unit-Tests.
 
 4. **Flexibilität**: Da die technischen Details in der Infrastrukturschicht gekapselt sind, können sie leicht ausgetauscht werden. Zum Beispiel könnte man von MongoDB zu einer anderen Datenbank wechseln, ohne die Geschäftslogik zu ändern.
+
+
+# ASCII-Diagramm Kommunikation / Kapselung
+
+````
++-------------------+     +-------------------+     +-------------------+
+|   Infrastructure  |<----|   Application     |<----|      Domain       |
+|                   |     |                   |     |                   |
+| -MongoRepository  |     |- UserService      |     |- User            |
++-------------------+     +-------------------+     +-------------------+
+        ^                         ^                         ^
+        |                         |                         |
+        |                         |                         |
++-------------------+     +-------------------+     +-------------------+
+| cmd/go-ddd-mongodb|     |                   |     |                   |
+|                   |     |                   |     |                   |
+| -main.go          |     |                   |     |                   |
++-------------------+     +-------------------+     +-------------------+
+````
